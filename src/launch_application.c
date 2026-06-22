@@ -1024,7 +1024,7 @@ PalPadArgs *PalPad_LaunchApp(FieldSystem *fieldSystem, SaveData *saveData, enum 
 }
 
 void sub_0203F570(FieldSystem *fieldSystem, SaveData *args) {
-    FieldSystem_LaunchApplication(fieldSystem, &gOverlayManagerTemplate_0, fieldSystem);
+    FieldSystem_LaunchApplication(fieldSystem, &gOverlayManagerTemplate_02087A78_0, fieldSystem);
 }
 
 static BOOL Task_NamingScreen(TaskManager *taskman) {

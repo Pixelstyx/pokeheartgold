@@ -7,7 +7,13 @@
 #include "save.h"
 #include "trainer_data.h"
 
-extern const OverlayManagerTemplate gOverlayManagerTemplate_0;
+extern const OverlayManagerTemplate gOverlayManagerTemplate_02087A78_0;
+
+typedef struct UnkStruct_02087A8C_2 {
+    BOOL unk0;
+    int unk4;
+    u8 padding[0x8];
+} UnkStruct_02087A8C_2;
 
 typedef struct UnkStruct_02087A8C {
     u32 unk0;
@@ -17,7 +23,7 @@ typedef struct UnkStruct_02087A8C {
     void *unk81C[5]; // I'm just assuming this goes all the way up until told otherwise.
     SaveData *saveData;
     u8 unk834[0x34];
-    void *unk868;
+    UnkStruct_02087A8C_2 *unk868;
     u32 unk86C;
     u32 unk870;
     u32 unk874;
@@ -28,34 +34,30 @@ typedef struct UnkStruct_02087A8C {
 } UnkStruct_02087A8C; // Size: 0x4170
 
 typedef struct Heap126Data {
-    u32 unk0;
+    u32 state;
     u32 unk4;
     OverlayManager *overlayManager;
     SaveData *saveData;
     BattleSetup *battleSetup;
     UnkStruct_02087A8C *unk_02087A8C;
-    u32 unk18;
-    u8 unk1C[0xC];
+    UnkStruct_02087A8C_2 unk_02087A8C_2;
     FieldSystem *fieldSystem;
 } Heap126Data; // Size: 0x2C
 
-MapEvents *sub_02087A78(OverlayManager *man);
-void sub_02087A84(FieldSystem *fieldSystem, FieldSystemUnkSub0 *unkSub0, FieldSystemUnkSub4 *unkSub4);
+UnkStruct_02087A8C *sub_02087A78(OverlayManager *man);
+void sub_02087A84(UnkStruct_02087A8C_2 *unkStruct, BOOL unkBool, int unkVal);
 
 const OverlayManagerTemplate *sub_02087E10(int index);
-void UnkStruct_02087A8C_HasUnionCaveFlypoint(UnkStruct_02087A8C *unk_02087A8C);
-BOOL sub_02087E34(u8 trainerClass);
+BOOL UnkStruct_02087A8C_HasUnionCaveFlypoint(UnkStruct_02087A8C *unk_02087A8C);
 
 // TODO: Move to relevant headers.
 void *sub_02087FF8(UnkStruct_02087A8C*, int);
-BOOL sub_02087BE8(Heap126Data *data, enum HeapID heapID);
-BOOL sub_02087C38(Heap126Data *data, enum HeapID heapID);
 
 extern const OverlayManagerTemplate _021028B4;
 extern const OverlayManagerTemplate _021028C4;
 
-void LoadOVY38();
-void UnloadOVY38();
+void LoadOVY38(); // LoadHttpOverlay?
+void UnloadOVY38(); // UnloadHttpOverlay?
 void sub_0202FC90(SaveData *saveData, enum HeapID heapID, s32*, BattleSetup *battleSetup, s32);
 void sub_020304F0(BattleSetup *battleSetup, SaveData *saveData);
 int sub_0202FC5C();
