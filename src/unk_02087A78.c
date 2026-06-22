@@ -18,6 +18,17 @@
 FS_EXTERN_OVERLAY(OVY_39);
 FS_EXTERN_OVERLAY(OVY_40);
 
+typedef struct Heap126Data {
+    u32 state;
+    u32 unk4;
+    OverlayManager *overlayManager;
+    SaveData *saveData;
+    BattleSetup *battleSetup;
+    UnkStruct_02087A8C *unk_02087A8C;
+    UnkStruct_02087A8C_2 unk_02087A8C_2;
+    FieldSystem *fieldSystem;
+} Heap126Data; // Size: 0x2C
+
 static BOOL sub_02087BE8(Heap126Data *data, enum HeapID heapID);
 static BOOL sub_02087C38(Heap126Data *data, enum HeapID heapID);
 static BOOL IsFrontierBrain(u8 trainerClass);

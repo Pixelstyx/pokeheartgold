@@ -33,17 +33,6 @@ typedef struct UnkStruct_02087A8C {
     u8 unk87C[0x38F8];
 } UnkStruct_02087A8C; // Size: 0x4170
 
-typedef struct Heap126Data {
-    u32 state;
-    u32 unk4;
-    OverlayManager *overlayManager;
-    SaveData *saveData;
-    BattleSetup *battleSetup;
-    UnkStruct_02087A8C *unk_02087A8C;
-    UnkStruct_02087A8C_2 unk_02087A8C_2;
-    FieldSystem *fieldSystem;
-} Heap126Data; // Size: 0x2C
-
 UnkStruct_02087A8C *sub_02087A78(OverlayManager *man);
 void sub_02087A84(UnkStruct_02087A8C_2 *unkStruct, BOOL unkBool, int unkVal);
 
