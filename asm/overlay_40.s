@@ -28023,7 +28023,7 @@ ov40_022399B8: ; 0x022399B8
 	mov r0, #3
 	str r0, [r4, #0x10]
 	add r0, r5, #0
-	bl sub_02087E1C
+	bl UnkStruct_02087A8C_HasUnionCaveFlypoint
 	cmp r0, #0
 	bne _022399EE
 	ldr r0, [r4, #0x10]
@@ -31659,7 +31659,7 @@ _0223B836:
 	mov r0, #2
 	str r0, [r5, #0xc]
 	add r0, r4, #0
-	bl sub_02087E1C
+	bl UnkStruct_02087A8C_HasUnionCaveFlypoint
 	cmp r0, #1
 	bne _0223B85E
 	add r0, r4, #0
@@ -37228,7 +37228,7 @@ _0223E576:
 	add r0, r4, r0
 	bl ov40_0222F734
 	add r0, r4, #0
-	bl sub_02087E1C
+	bl UnkStruct_02087A8C_HasUnionCaveFlypoint
 	cmp r0, #1
 	ldr r0, _0223E6DC ; =0x0000049C
 	bne _0223E5C2
@@ -38563,7 +38563,7 @@ _0223F072:
 	cmp r6, #0xff
 	bne _0223F08A
 	add r0, r4, #0
-	bl sub_02087E1C
+	bl UnkStruct_02087A8C_HasUnionCaveFlypoint
 	cmp r0, #1
 	bne _0223F088
 	mov r6, #0xff

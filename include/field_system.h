@@ -76,12 +76,12 @@ typedef struct FieldSystemUnk108 {
     Pokemon *mon;
 } FieldSystemUnk108;
 
-struct FieldSystemUnkSub0 {
+typedef struct FieldSystemUnkSub0 {
     OverlayManager *unk0;
     OverlayManager *unk4;
     BOOL isPaused;
     BOOL unkC;
-};
+} FieldSystemUnkSub0;
 
 typedef struct FieldEnvSubUnk18 {
     int state;

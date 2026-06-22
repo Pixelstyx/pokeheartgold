@@ -35,7 +35,7 @@
 .public sub_02087A78
 .public sub_02087A84
 .public sub_02087E10
-.public sub_02087E1C
+.public UnkStruct_02087A8C_HasUnionCaveFlypoint
 .public sub_02087FF8
 .public LoadOVY38
 .public UnloadOVY38

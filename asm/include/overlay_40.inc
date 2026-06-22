@@ -275,7 +275,7 @@
 .public sub_02087A30
 .public sub_02087A54
 .public sub_02087A84
-.public sub_02087E1C
+.public UnkStruct_02087A8C_HasUnionCaveFlypoint
 .public sub_02088030
 .public NNS_G2dGetUnpackedPaletteData
 .public NNS_G2dSetupSoftwareSpriteCamera
