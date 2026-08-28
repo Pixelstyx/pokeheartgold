@@ -43,7 +43,7 @@ const OverlayManagerTemplate gApplication_ContinueFieldsys = {
     .ovy_id = FS_OVERLAY_ID_NONE
 };
 
-static FieldSystem *sFieldSysPtr;
+FieldSystem *gFieldSysPtr;
 
 typedef struct UnkFieldSystemInit {
     int unk0;
@@ -54,12 +54,12 @@ static BOOL FieldSystem_Main(FieldSystem *fieldSystem);
 
 BOOL Field_Continue_AppInit(OverlayManager *man, int *unused) {
     FieldSystemInitWork *args = OverlayManager_GetArgs(man);
-    sFieldSysPtr = FieldSystem_New(man);
+    gFieldSysPtr = FieldSystem_New(man);
 
     if (args->unk4) {
-        CallFieldTask_ContinueGame_CommError(sFieldSysPtr);
+        CallFieldTask_ContinueGame_CommError(gFieldSysPtr);
     } else {
-        CallFieldTask_ContinueGame_Normal(sFieldSysPtr);
+        CallFieldTask_ContinueGame_Normal(gFieldSysPtr);
     }
 
     args->unk4 = 0;
@@ -68,8 +68,8 @@ BOOL Field_Continue_AppInit(OverlayManager *man, int *unused) {
 }
 
 BOOL Field_NewGame_AppInit(OverlayManager *man, int *unused) {
-    sFieldSysPtr = FieldSystem_New(man);
-    CallFieldTask_NewGame(sFieldSysPtr);
+    gFieldSysPtr = FieldSystem_New(man);
+    CallFieldTask_NewGame(gFieldSysPtr);
     return TRUE;
 }
 
@@ -285,20 +285,20 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
 }
 
 void sub_0203E2F4() {
-    sFieldSysPtr->processManager->isPaused = TRUE;
+    gFieldSysPtr->processManager->isPaused = TRUE;
     sub_02037504();
 }
 
 void sub_0203E30C() {
-    sFieldSysPtr->processManager->isPaused = FALSE;
+    gFieldSysPtr->processManager->isPaused = FALSE;
     sub_020374E4();
 }
 
 int sub_0203E324() {
-    if (sFieldSysPtr->unk4 == NULL) {
+    if (gFieldSysPtr->unk4 == NULL) {
         return 0;
     }
-    return sFieldSysPtr->unk4->unk14;
+    return gFieldSysPtr->unk4->unk14;
 }
 
 void sub_0203E33C(FieldSystem *fieldSystem, int a1) {
@@ -319,5 +319,5 @@ void Task_AntipiracyRandom() {
 }
 
 void Field_SetEnvironmentSoundState_None_Unk2() {
-    sFieldSysPtr->environmentSoundState = ENVIRONMENT_SOUND_NONE_UNK2;
+    gFieldSysPtr->environmentSoundState = ENVIRONMENT_SOUND_NONE_UNK2;
 }

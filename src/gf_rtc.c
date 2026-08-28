@@ -1,8 +1,11 @@
 #include "gf_rtc.h"
 
+#include "field_system.h"
 #include "global.h"
 #include "igt.h"
 #include "player_data.h"
+
+extern FieldSystem *gFieldSysPtr;
 
 #define MAX_SECONDS (3155759999ll)
 
@@ -95,10 +98,10 @@ void GF_RTC_CopyDate(RTCDate *date) {
 
 // Altered to account for timescale config and decoupled from RTC.
 s32 GF_RTC_TimeToSec(void) {
-    int startingHour = 0;   // Starts at 12 AM.
-    int dayTimescale = 250; // Percentage timescale.
+    int startingHour = 12;   // Starts at 12 AM. Defaulted to noon.
+    int dayTimescale = 250; // Percentage timescale. Defaulted to 2.5x (1 day per real-life hour)
 
-    IGT *playTime = Save_PlayerData_GetIGTAddr(gFieldSysPtr->savedata);
+    IGT *playTime = Save_PlayerData_GetIGTAddr(gFieldSysPtr->saveData);
     return (((60 * playTime->minutes + 3600 * (playTime->hours + startingHour) + playTime->seconds) * dayTimescale) / 100) % 86400;
 }
 
