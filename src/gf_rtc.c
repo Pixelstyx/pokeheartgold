@@ -1,6 +1,8 @@
 #include "gf_rtc.h"
 
 #include "global.h"
+#include "igt.h"
+#include "player_data.h"
 
 #define MAX_SECONDS (3155759999ll)
 
@@ -91,9 +93,13 @@ void GF_RTC_CopyDate(RTCDate *date) {
     *date = *getDate(&sRTCWork);
 }
 
+// Altered to account for timescale config and decoupled from RTC.
 s32 GF_RTC_TimeToSec(void) {
-    RTCTime *time = getTime(&sRTCWork);
-    return 60 * time->minute + 3600 * time->hour + time->second;
+    int startingHour = 0;   // Starts at 12 AM.
+    int dayTimescale = 250; // Percentage timescale.
+
+    IGT *playTime = Save_PlayerData_GetIGTAddr(gFieldSysPtr->savedata);
+    return (((60 * playTime->minutes + 3600 * (playTime->hours + startingHour) + playTime->seconds) * dayTimescale) / 100) % 86400;
 }
 
 s64 GF_RTC_DateTimeToSec(void) {
@@ -162,6 +168,8 @@ TimeOfDayWildParam GF_RTC_GetTimeOfDayWildParam(void) {
 }
 
 TIMEOFDAY GF_RTC_GetTimeOfDayByHour(s32 hour) {
+    s32 scaledHour = GF_RTC_TimeToSec() / 3600;
+    
     static const u8 sTimeOfDayByHour[24] = {
         RTC_TIMEOFDAY_LATE,
         RTC_TIMEOFDAY_LATE,
@@ -190,7 +198,7 @@ TIMEOFDAY GF_RTC_GetTimeOfDayByHour(s32 hour) {
     };
 
     GF_ASSERT(hour >= 0 && hour < 24);
-    return (TIMEOFDAY)sTimeOfDayByHour[hour];
+    return (TIMEOFDAY)sTimeOfDayByHour[scaledHour];
 }
 
 TimeOfDayWildParam GF_RTC_GetTimeOfDayWildParamByHour(s32 hour) {
